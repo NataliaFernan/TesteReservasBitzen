@@ -10,7 +10,7 @@ namespace ReservasService.Interfaces
 {
     public interface IUsuarioService
     {
-        Task<Usuario> CadastrarUsuario(Usuario usuario);
+        Task<Usuario> CadastrarUsuario(UsuarioDto usuario);
         Task<Usuario> EditarUsuario(Usuario usuario);
         Task<bool> DesativarUsuario(int id);
         Task<string> ObterUsuarioEmailSenha(EntrarDto entrarDto);

@@ -37,12 +37,18 @@ using ReservasService.Interfaces;
 
             }
 
-            public async Task<Usuario> CadastrarUsuario(Usuario usuario)
+            public async Task<Usuario> CadastrarUsuario(UsuarioDto usuario)
             {
-                usuario.DataCriacao = DateTimeOffset.UtcNow;
-                usuario.Ativo = true;
+                var usuarioCadastrar = new Usuario()
+                {
+                    Email = usuario.Email,
+                    Nome = usuario.Nome,
+                    Senha = usuario.Senha,
+                    DataCriacao = DateTimeOffset.UtcNow,
+                    Ativo = true
+                };
 
-                return await _usuarioRepository.Criar(usuario);
+                return await _usuarioRepository.Criar(usuarioCadastrar);
             }
 
             public async Task<Usuario> EditarUsuario(Usuario usuario)

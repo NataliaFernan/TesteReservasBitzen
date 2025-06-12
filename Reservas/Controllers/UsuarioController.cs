@@ -32,7 +32,7 @@ namespace Reservas.Controllers
         }
 
         [HttpPost("cadastrar")]
-        public async Task<ActionResult> CadastrarUsuario([FromBody] Usuario usuario)
+        public async Task<ActionResult> CadastrarUsuario([FromBody] UsuarioDto usuario)
         {
             try
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ReservasRepository.Interfaces;
 using ReservasRepository.Models;
+using ReservasRepository.Models.Dto;
 using ReservasService.Interfaces;
 
     namespace ReservasService
@@ -17,12 +18,17 @@ using ReservasService.Interfaces;
                 _salaRepository = salaRepository;
             }
 
-            public async Task<Sala> CadastrarSala(Sala sala)
+            public async Task<Sala> CadastrarSala(SalaDto sala)
             {
-                sala.DataCriacao = DateTimeOffset.UtcNow;
-                sala.Ativo = true;
+                var salaCriar = new Sala()
+                {
+                    Nome = sala.Nome,
+                    Capacidade = sala.Capacidade,
+                    DataCriacao = DateTimeOffset.UtcNow,
+                    Ativo = true
+                };
 
-                return await _salaRepository.Criar(sala);
+                return await _salaRepository.Criar(salaCriar);
             }
 
             public async Task<Sala> EditarSala(Sala sala)

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReservasRepository.Models;
+using ReservasRepository.Models.Dto;
 using ReservasService;
 using ReservasService.Interfaces;
 
@@ -19,7 +20,7 @@ namespace Reservas.Controllers
 
         [Authorize]
         [HttpPost("cadastrar")]
-        public async Task<ActionResult> CadastrarSala([FromBody] Sala sala)
+        public async Task<ActionResult> CadastrarSala([FromBody] SalaDto sala)
         {
             try
             {
